@@ -228,4 +228,23 @@
                 <form id="checkout-form">
                     <div class="form-group">
                         <label data-ar="الاسم بالكامل" data-en="Full Name">الاسم بالكامل</label>
-                        <input type
+                        <input type="text" id="cust-name" required placeholder="مثال: أحمد محمد">
+                    </div>
+                    <div class="form-group">
+                        <label data-ar="رقم الهاتف" data-en="Phone Number">رقم الهاتف</label>
+                        <input type="tel" id="cust-phone" required placeholder="مثال: 0501234567">
+                    </div>
+                    <div class="form-group">
+                        <label data-ar="العنوان بالتفصيل" data-en="Detailed Address">العنوان بالتفصيل</label>
+                        <textarea id="cust-address" required placeholder="مثال: شارع الشيخ زايد، مبنى 5، شقة 10"></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit" data-ar="تأكيد الطلب" data-en="Confirm Order">تأكيد الطلب</button>
+                </form>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
