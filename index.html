@@ -221,4 +221,64 @@
                 <div class="menu-card"><div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?q=80&w=500&auto=format&fit=crop');"></div><div class="card-info"><h3 data-ar="مهلبية" data-en="Muhallebi">مهلبية</h3><p data-ar="مهلبية بالمكسرات" data-en="Muhallebi with nuts">مهلبية بالمكسرات</p><div class="card-bottom"><span class="price" data-ar="15 د.إ" data-en="15 AED">15 د.إ</span><button class="add-btn"><i class="fa-solid fa-plus"></i> <span data-ar="أضف" data-en="Add">أضف</span></button></div></div></div>
                 <div class="menu-card"><div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1582716401301-b2407dc7563d?q=80&w=500&auto=format&fit=crop');"></div><div class="card-info"><h3 data-ar="زلابية" data-en="Zalabia">زلابية</h3><p data-ar="زلابية مقرمشة بالعسل" data-en="Crispy Zalabia with honey">زلابية مقرمشة بالعسل</p><div class="card-bottom"><span class="price" data-ar="15 د.إ" data-en="15 AED">15 د.إ</span><button class="add-btn"><i class="fa-solid fa-plus"></i> <span data-ar="أضف" data-en="Add">أضف</span></button></div></div></div>
                 <div class="menu-card"><div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1600326145552-327cf6e0c1c7?q=80&w=500&auto=format&fit=crop');"></div><div class="card-info"><h3 data-ar="بلح الشام" data-en="Balah El Sham">بلح الشام</h3><p data-ar="بلح الشام المحشي بالقشطة" data-en="Balah El Sham stuffed with cream">بلح الشام المحشي بالقشطة</p><div class="card-bottom"><span class="price" data-ar="22 د.إ" data-en="22 AED">22 د.إ</span><button class="add-btn"><i class="fa-solid fa-plus"></i> <span data-ar="أضف" data-en="Add">أضف</span></button></div></div></div>
-                <div class="menu-card"><div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1599785209707-a456fc1337bb?q=80&w=500&auto=format&fit=crop');"></div><div class="card-info"><h3 data-ar="كاسترد" data-en="Custard">كاسترد</h3><p data-ar="كاسترد بالفواكه الطازجة" data-en="Custard with fresh fruits">كاسترد بالفواكه الطازجة</p><div class="card-bottom"><span class="price" data-ar="18 د.إ
+                <div class="menu-card"><div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1599785209707-a456fc1337bb?q=80&w=500&auto=format&fit=crop');"></div><div class="card-info"><h3 data-ar="كاسترد" data-en="Custard">كاسترد</h3><p data-ar="كاسترد بالفواكه الطازجة" data-en="Custard with fresh fruits">كاسترد بالفواكه الطازجة</p><div class="card-bottom"><span class="price" data-ar="18 د.إ" data-en="18 AED">18 د.إ</span><button class="add-btn"><i class="fa-solid fa-plus"></i> <span data-ar="أضف" data-en="Add">أضف</span></button></div></div></div>
+            </div>
+        </section>
+
+        <!-- نافذة سلة المشتريات -->
+        <div id="cart-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-cart-modal">&times;</span>
+                <h2 data-ar="سلة المشتريات" data-en="Shopping Cart">سلة المشتريات</h2>
+                
+                <div id="cart-items" class="cart-items">
+                    <!-- سيتم إضافة الأصناف هنا ديناميكياً -->
+                </div>
+
+                <div class="cart-summary">
+                    <div class="summary-row">
+                        <span data-ar="المجموع الفرعي:" data-en="Subtotal:">المجموع الفرعي:</span>
+                        <span id="subtotal">0 د.إ</span>
+                    </div>
+                    <div class="summary-row discount-row">
+                        <span data-ar="الخصم (15%):" data-en="Discount (15%):">الخصم (15%):</span>
+                        <span id="discount">0 د.إ</span>
+                    </div>
+                    <div class="summary-row total-row">
+                        <span data-ar="الإجمالي:" data-en="Total:">الإجمالي:</span>
+                        <span id="total">0 د.إ</span>
+                    </div>
+                </div>
+
+                <button class="btn-submit" id="go-to-checkout" data-ar="إتمام الطلب" data-en="Proceed to Checkout">إتمام الطلب</button>
+            </div>
+        </div>
+
+        <!-- نافذة إتمام الطلب -->
+        <div id="checkout-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2 data-ar="إتمام الطلب" data-en="Checkout">إتمام الطلب</h2>
+                <form id="checkout-form">
+                    <div class="form-group">
+                        <label data-ar="الاسم بالكامل" data-en="Full Name">الاسم بالكامل</label>
+                        <input type="text" id="cust-name" required placeholder="مثال: أحمد محمد">
+                    </div>
+                    <div class="form-group">
+                        <label data-ar="رقم الهاتف" data-en="Phone Number">رقم الهاتف</label>
+                        <input type="tel" id="cust-phone" required placeholder="مثال: 0501234567">
+                    </div>
+                    <div class="form-group">
+                        <label data-ar="العنوان بالتفصيل" data-en="Detailed Address">العنوان بالتفصيل</label>
+                        <textarea id="cust-address" required placeholder="مثال: شارع الشيخ زايد، مبنى 5، شقة 10"></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit" data-ar="تأكيد الطلب" data-en="Confirm Order">تأكيد الطلب</button>
+                </form>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
