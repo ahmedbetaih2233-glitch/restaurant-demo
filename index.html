@@ -9,8 +9,13 @@
 </head>
 <body>
 
-    <!-- القائمة الجانبية -->
-    <nav class="sidebar">
+    <!-- زر فتح/إغلاق القائمة (للموبايل) -->
+    <button id="menu-toggle" class="menu-toggle">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <!-- القائمة الجانبية التفاعلية -->
+    <nav class="sidebar" id="sidebar">
         <div class="logo">
             <i class="fa-solid fa-utensils"></i>
             <h2 data-ar="المطعم المصري" data-en="Egyptian Restaurant">المطعم المصري</h2>
@@ -34,12 +39,13 @@
         </div>
     </nav>
 
+    <!-- المحتوى الرئيسي -->
     <main class="content">
         
         <!-- قسم الترحيب -->
-        <section id="home" class="hero-section">
+        <section id="home" class="hero-section" style="background: linear-gradient(rgba(253, 251, 247, 0.85), rgba(253, 251, 247, 0.85)), url('https://images.unsplash.com/photo-1541544741938-0af808871cc0?q=80&w=1000&auto=format&fit=crop') no-repeat center center/cover;">
             <div class="hero-text">
-                <h1><span data-ar="أهلاً بيك في" data-en="Welcome to">أهلاً بيك في</span> <span data-ar="المطعم المصري" data-en="Egyptian Restaurant" style="color: #d4af37;">المطعم المصري</span></h1>
+                <h1><span data-ar="أهلاً بيك في" data-en="Welcome to">أهلاً بيك في</span> <span data-ar="المطعم المصري" data-en="Egyptian Restaurant" style="color: #6F4E37;">المطعم المصري</span></h1>
                 <p data-ar="أشهى الأكلات المصرية الأصيلة.. من الكشري والملوخية للمشويات والحلويات الشرقية" data-en="The most delicious authentic Egyptian dishes.. From Koshary and Molokhia to grills and oriental desserts">أشهى الأكلات المصرية الأصيلة.. من الكشري والملوخية للمشويات والحلويات الشرقية</p>
                 <button class="btn-order"><span data-ar="اطلب الآن" data-en="Order Now">اطلب الآن</span> <i class="fa-solid fa-arrow-left"></i></button>
             </div>
@@ -49,9 +55,9 @@
         <section id="meals" class="menu-section">
             <h2 class="section-title" data-ar="الوجبات الرئيسية" data-en="Main Meals">الوجبات الرئيسية</h2>
             <div class="menu-grid">
-                <!-- كارت 1 -->
+                <!-- كارت 1: كشري -->
                 <div class="menu-card">
-                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1544025162-d76690b67fbd?q=80&w=500&auto=format&fit=crop');"></div>
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1512058564366-18510be2db19?q=80&w=500&auto=format&fit=crop');"></div>
                     <div class="card-info">
                         <h3 data-ar="كشري مصري" data-en="Egyptian Koshary">كشري مصري</h3>
                         <p data-ar="طبق الكشري الأصلي بالعدس والأرز والمكرونة" data-en="Authentic Koshary with lentils, rice, and pasta">طبق الكشري الأصلي بالعدس والأرز والمكرونة</p>
@@ -61,9 +67,9 @@
                         </div>
                     </div>
                 </div>
-                <!-- كارت 2 -->
+                <!-- كارت 2: ملوخية -->
                 <div class="menu-card">
-                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1544025162-d76690b67fbd?q=80&w=500&auto=format&fit=crop');"></div>
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1547592180-85f173990554?q=80&w=500&auto=format&fit=crop');"></div>
                     <div class="card-info">
                         <h3 data-ar="ملوخية بالفراخ" data-en="Molokhia with Chicken">ملوخية بالفراخ</h3>
                         <p data-ar="ملوخية خضراء طازجة مع فراخ مشوية" data-en="Fresh green Molokhia with grilled chicken">ملوخية خضراء طازجة مع فراخ مشوية</p>
@@ -73,7 +79,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- كارت 3 -->
+                <!-- كارت 3: مشويات -->
                 <div class="menu-card">
                     <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1544025162-d76690b67fbd?q=80&w=500&auto=format&fit=crop');"></div>
                     <div class="card-info">
@@ -81,6 +87,18 @@
                         <p data-ar="تشكيلة من الكباب والكفتة والحمام" data-en="Selection of Kebab, Kofta, and Pigeon">تشكيلة من الكباب والكفتة والحمام</p>
                         <div class="card-bottom">
                             <span class="price" data-ar="120 ج.م" data-en="120 EGP">120 ج.م</span>
+                            <button class="add-btn"><i class="fa-solid fa-plus"></i> <span data-ar="أضف" data-en="Add">أضف</span></button>
+                        </div>
+                    </div>
+                </div>
+                <!-- كارت 4: فول وطعمية -->
+                <div class="menu-card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1626200419199-391ae4be7a41?q=80&w=500&auto=format&fit=crop');"></div>
+                    <div class="card-info">
+                        <h3 data-ar="فول وطعمية" data-en="Foul and Falafel">فول وطعمية</h3>
+                        <p data-ar="فول مدمس وطعمية ساخنة مع الطحينة" data-en="Fava beans and hot falafel with tahini">فول مدمس وطعمية ساخنة مع الطحينة</p>
+                        <div class="card-bottom">
+                            <span class="price" data-ar="25 ج.م" data-en="25 EGP">25 ج.م</span>
                             <button class="add-btn"><i class="fa-solid fa-plus"></i> <span data-ar="أضف" data-en="Add">أضف</span></button>
                         </div>
                     </div>
@@ -93,7 +111,7 @@
             <h2 class="section-title" data-ar="المشروبات" data-en="Drinks">المشروبات</h2>
             <div class="menu-grid">
                 <div class="menu-card">
-                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1544145945-f90425340c7e?q=80&w=500&auto=format&fit=crop');"></div>
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1622597467836-f3824f2c1b2b?q=80&w=500&auto=format&fit=crop');"></div>
                     <div class="card-info">
                         <h3 data-ar="عصير قصب" data-en="Sugarcane Juice">عصير قصب</h3>
                         <p data-ar="عصير قصب طازج منعش" data-en="Fresh and refreshing sugarcane juice">عصير قصب طازج منعش</p>
@@ -108,6 +126,17 @@
                     <div class="card-info">
                         <h3 data-ar="عرقسوس" data-en="Licorice Drink">عرقسوس</h3>
                         <p data-ar="عرقسوس مصري أصلي" data-en="Authentic Egyptian Licorice">عرقسوس مصري أصلي</p>
+                        <div class="card-bottom">
+                            <span class="price" data-ar="10 ج.م" data-en="10 EGP">10 ج.م</span>
+                            <button class="add-btn"><i class="fa-solid fa-plus"></i> <span data-ar="أضف" data-en="Add">أضف</span></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1571167530149-c1105da4c2c7?q=80&w=500&auto=format&fit=crop');"></div>
+                    <div class="card-info">
+                        <h3 data-ar="شاي مصري" data-en="Egyptian Tea">شاي مصري</h3>
+                        <p data-ar="شاي ثقيل بالنعناع" data-en="Heavy tea with mint">شاي ثقيل بالنعناع</p>
                         <div class="card-bottom">
                             <span class="price" data-ar="10 ج.م" data-en="10 EGP">10 ج.م</span>
                             <button class="add-btn"><i class="fa-solid fa-plus"></i> <span data-ar="أضف" data-en="Add">أضف</span></button>
@@ -133,7 +162,7 @@
                     </div>
                 </div>
                 <div class="menu-card">
-                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1519676867240-f03562e64548?q=80&w=500&auto=format&fit=crop');"></div>
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?q=80&w=500&auto=format&fit=crop');"></div>
                     <div class="card-info">
                         <h3 data-ar="بسبوسة" data-en="Basbousa">بسبوسة</h3>
                         <p data-ar="بسبوسة باللوز والقشطة" data-en="Basbousa with almonds and cream">بسبوسة باللوز والقشطة</p>
@@ -143,30 +172,43 @@
                         </div>
                     </div>
                 </div>
+                <div class="menu-card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1551024506-0bccd828d307?q=80&w=500&auto=format&fit=crop');"></div>
+                    <div class="card-info">
+                        <h3 data-ar="كنافة" data-en="Konafa">كنافة</h3>
+                        <p data-ar="كنافة بالجبنة والمكسرات" data-en="Konafa with cheese and nuts">كنافة بالجبنة والمكسرات</p>
+                        <div class="card-bottom">
+                            <span class="price" data-ar="35 ج.م" data-en="35 EGP">35 ج.م</span>
+                            <button class="add-btn"><i class="fa-solid fa-plus"></i> <span data-ar="أضف" data-en="Add">أضف</span></button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
-       <!-- نافذة إتمام الطلب -->
-    <div id="checkout-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h2 data-ar="إتمام الطلب" data-en="Checkout">إتمام الطلب</h2>
-            <form id="checkout-form">
-                <div class="form-group">
-                    <label data-ar="الاسم بالكامل" data-en="Full Name">الاسم بالكامل</label>
-                    <input type="text" id="cust-name" required placeholder="مثال: أحمد محمد">
-                </div>
-                <div class="form-group">
-                    <label data-ar="رقم الهاتف" data-en="Phone Number">رقم الهاتف</label>
-                    <input type="tel" id="cust-phone" required placeholder="مثال: 01012345678">
-                </div>
-                <div class="form-group">
-                    <label data-ar="العنوان بالتفصيل" data-en="Detailed Address">العنوان بالتفصيل</label>
-                    <textarea id="cust-address" required placeholder="مثال: شارع التحرير، الدور الثالث، شقة 5"></textarea>
-                </div>
-                <button type="submit" class="btn-submit" data-ar="تأكيد الطلب" data-en="Confirm Order">تأكيد الطلب</button>
-            </form>
+
+        <!-- نافذة إتمام الطلب -->
+        <div id="checkout-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2 data-ar="إتمام الطلب" data-en="Checkout">إتمام الطلب</h2>
+                <form id="checkout-form">
+                    <div class="form-group">
+                        <label data-ar="الاسم بالكامل" data-en="Full Name">الاسم بالكامل</label>
+                        <input type="text" id="cust-name" required placeholder="مثال: أحمد محمد">
+                    </div>
+                    <div class="form-group">
+                        <label data-ar="رقم الهاتف" data-en="Phone Number">رقم الهاتف</label>
+                        <input type="tel" id="cust-phone" required placeholder="مثال: 01012345678">
+                    </div>
+                    <div class="form-group">
+                        <label data-ar="العنوان بالتفصيل" data-en="Detailed Address">العنوان بالتفصيل</label>
+                        <textarea id="cust-address" required placeholder="مثال: شارع التحرير، الدور الثالث، شقة 5"></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit" data-ar="تأكيد الطلب" data-en="Confirm Order">تأكيد الطلب</button>
+                </form>
+            </div>
         </div>
-    </div>
+
     </main>
 
     <script src="script.js"></script>
