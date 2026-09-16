@@ -113,3 +113,27 @@ if (checkoutForm) {
         cartCountElement.textContent = 0;
     });
 }
+// --- كود فتح وإغلاق القائمة الجانبية (للموبايل) ---
+const menuToggle = document.getElementById('menu-toggle');
+const sidebar = document.getElementById('sidebar');
+
+if (menuToggle && sidebar) {
+    menuToggle.addEventListener('click', (e) => {
+        e.stopPropagation(); // منع انتشار الحدث
+        sidebar.classList.toggle('active');
+    });
+
+    // إغلاق القائمة عند الضغط على أي رابط داخلها
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            sidebar.classList.remove('active');
+        });
+    });
+
+    // إغلاق القائمة عند الضغط في أي مكان خارجها
+    document.addEventListener('click', (e) => {
+        if (sidebar.classList.contains('active') && !sidebar.contains(e.target) && e.target !== menuToggle) {
+            sidebar.classList.remove('active');
+        }
+    });
+}
