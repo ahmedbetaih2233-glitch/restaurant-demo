@@ -14,14 +14,13 @@
         <i class="fa-solid fa-bars"></i>
     </button>
 
-    <!-- القائمة الجانبية التفاعلية -->
+    <!-- القائمة الجانبية -->
     <nav class="sidebar" id="sidebar">
         <div class="logo">
             <i class="fa-solid fa-utensils"></i>
             <h2 data-ar="المطعم المصري" data-en="Egyptian Restaurant">المطعم المصري</h2>
         </div>
         
-        <!-- زر تغيير اللغة -->
         <button id="lang-toggle" class="lang-btn">
             <i class="fa-solid fa-globe"></i> <span>English</span>
         </button>
@@ -42,63 +41,144 @@
     <!-- المحتوى الرئيسي -->
     <main class="content">
         
-        <!-- قسم الترحيب -->
+        <!-- قسم الترحيب مع العروض المتحركة -->
         <section id="home" class="hero-section" style="background: linear-gradient(rgba(253, 251, 247, 0.85), rgba(253, 251, 247, 0.85)), url('https://images.unsplash.com/photo-1541544741938-0af808871cc0?q=80&w=1000&auto=format&fit=crop') no-repeat center center/cover;">
             <div class="hero-text">
                 <h1><span data-ar="أهلاً بيك في" data-en="Welcome to">أهلاً بيك في</span> <span data-ar="المطعم المصري" data-en="Egyptian Restaurant" style="color: #6F4E37;">المطعم المصري</span></h1>
                 <p data-ar="أشهى الأكلات المصرية الأصيلة.. من الكشري والملوخية للمشويات والحلويات الشرقية" data-en="The most delicious authentic Egyptian dishes.. From Koshary and Molokhia to grills and oriental desserts">أشهى الأكلات المصرية الأصيلة.. من الكشري والملوخية للمشويات والحلويات الشرقية</p>
-                <button class="btn-order"><span data-ar="اطلب الآن" data-en="Order Now">اطلب الآن</span> <i class="fa-solid fa-arrow-left"></i></button>
+                
+                <!-- صندوق العروض المتحرك -->
+                <div class="offer-box">
+                    <i class="fa-solid fa-tags"></i>
+                    <div class="offer-text">
+                        <span class="offer-item" data-ar="خصم 25% على صينية المشويات المشكلة!" data-en="25% OFF on Mixed Grill Platter!">خصم 25% على صينية المشويات المشكلة!</span>
+                        <span class="offer-item" data-ar="خصم 15% على طلب الكشري العائلي!" data-en="15% OFF on Family Koshary!">خصم 15% على طلب الكشري العائلي!</span>
+                        <span class="offer-item" data-ar="خصم 20% على الحلويات الشرقية!" data-en="20% OFF on Oriental Desserts!">خصم 20% على الحلويات الشرقية!</span>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- قسم الوجبات الرئيسية -->
+        <!-- قسم الوجبات الرئيسية (10 أصناف) -->
         <section id="meals" class="menu-section">
             <h2 class="section-title" data-ar="الوجبات الرئيسية" data-en="Main Meals">الوجبات الرئيسية</h2>
             <div class="menu-grid">
-                <!-- كارت 1: كشري -->
+                <!-- 1 -->
                 <div class="menu-card">
                     <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1512058564366-18510be2db19?q=80&w=500&auto=format&fit=crop');"></div>
                     <div class="card-info">
                         <h3 data-ar="كشري مصري" data-en="Egyptian Koshary">كشري مصري</h3>
                         <p data-ar="طبق الكشري الأصلي بالعدس والأرز والمكرونة" data-en="Authentic Koshary with lentils, rice, and pasta">طبق الكشري الأصلي بالعدس والأرز والمكرونة</p>
                         <div class="card-bottom">
-                            <span class="price" data-ar="35 ج.م" data-en="35 EGP">35 ج.م</span>
+                            <span class="price" data-ar="25 د.إ" data-en="25 AED">25 د.إ</span>
                             <button class="add-btn"><i class="fa-solid fa-plus"></i> <span data-ar="أضف" data-en="Add">أضف</span></button>
                         </div>
                     </div>
                 </div>
-                <!-- كارت 2: ملوخية -->
+                <!-- 2 -->
                 <div class="menu-card">
                     <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1547592180-85f173990554?q=80&w=500&auto=format&fit=crop');"></div>
                     <div class="card-info">
                         <h3 data-ar="ملوخية بالفراخ" data-en="Molokhia with Chicken">ملوخية بالفراخ</h3>
                         <p data-ar="ملوخية خضراء طازجة مع فراخ مشوية" data-en="Fresh green Molokhia with grilled chicken">ملوخية خضراء طازجة مع فراخ مشوية</p>
                         <div class="card-bottom">
-                            <span class="price" data-ar="60 ج.م" data-en="60 EGP">60 ج.م</span>
+                            <span class="price" data-ar="45 د.إ" data-en="45 AED">45 د.إ</span>
                             <button class="add-btn"><i class="fa-solid fa-plus"></i> <span data-ar="أضف" data-en="Add">أضف</span></button>
                         </div>
                     </div>
                 </div>
-                <!-- كارت 3: مشويات -->
+                <!-- 3 -->
                 <div class="menu-card">
                     <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1544025162-d76690b67fbd?q=80&w=500&auto=format&fit=crop');"></div>
                     <div class="card-info">
                         <h3 data-ar="مشويات مشكلة" data-en="Mixed Grill">مشويات مشكلة</h3>
                         <p data-ar="تشكيلة من الكباب والكفتة والحمام" data-en="Selection of Kebab, Kofta, and Pigeon">تشكيلة من الكباب والكفتة والحمام</p>
                         <div class="card-bottom">
-                            <span class="price" data-ar="120 ج.م" data-en="120 EGP">120 ج.م</span>
+                            <span class="price" data-ar="85 د.إ" data-en="85 AED">85 د.إ</span>
                             <button class="add-btn"><i class="fa-solid fa-plus"></i> <span data-ar="أضف" data-en="Add">أضف</span></button>
                         </div>
                     </div>
                 </div>
-                <!-- كارت 4: فول وطعمية -->
+                <!-- 4 -->
                 <div class="menu-card">
                     <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1626200419199-391ae4be7a41?q=80&w=500&auto=format&fit=crop');"></div>
                     <div class="card-info">
                         <h3 data-ar="فول وطعمية" data-en="Foul and Falafel">فول وطعمية</h3>
                         <p data-ar="فول مدمس وطعمية ساخنة مع الطحينة" data-en="Fava beans and hot falafel with tahini">فول مدمس وطعمية ساخنة مع الطحينة</p>
                         <div class="card-bottom">
-                            <span class="price" data-ar="25 ج.م" data-en="25 EGP">25 ج.م</span>
+                            <span class="price" data-ar="20 د.إ" data-en="20 AED">20 د.إ</span>
+                            <button class="add-btn"><i class="fa-solid fa-plus"></i> <span data-ar="أضف" data-en="Add">أضف</span></button>
+                        </div>
+                    </div>
+                </div>
+                <!-- 5 -->
+                <div class="menu-card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1603105037880-880cd4edfb0d?q=80&w=500&auto=format&fit=crop');"></div>
+                    <div class="card-info">
+                        <h3 data-ar="محشي ورق عنب" data-en="Stuffed Vine Leaves">محشي ورق عنب</h3>
+                        <p data-ar="ورق عنب محشي بالأرز واللحم" data-en="Vine leaves stuffed with rice and meat">ورق عنب محشي بالأرز واللحم</p>
+                        <div class="card-bottom">
+                            <span class="price" data-ar="55 د.إ" data-en="55 AED">55 د.إ</span>
+                            <button class="add-btn"><i class="fa-solid fa-plus"></i> <span data-ar="أضف" data-en="Add">أضف</span></button>
+                        </div>
+                    </div>
+                </div>
+                <!-- 6 -->
+                <div class="menu-card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1589302168068-964664d93dc0?q=80&w=500&auto=format&fit=crop');"></div>
+                    <div class="card-info">
+                        <h3 data-ar="رقاق باللحمة" data-en="Raqaq with Meat">رقاق باللحمة</h3>
+                        <p data-ar="رقاق مصري باللحمة المفرومة" data-en="Egyptian Raqaq with minced meat">رقاق مصري باللحمة المفرومة</p>
+                        <div class="card-bottom">
+                            <span class="price" data-ar="65 د.إ" data-en="65 AED">65 د.إ</span>
+                            <button class="add-btn"><i class="fa-solid fa-plus"></i> <span data-ar="أضف" data-en="Add">أضف</span></button>
+                        </div>
+                    </div>
+                </div>
+                <!-- 7 -->
+                <div class="menu-card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=500&auto=format&fit=crop');"></div>
+                    <div class="card-info">
+                        <h3 data-ar="فطيرة باللحمة" data-en="Meat Pie">فطيرة باللحمة</h3>
+                        <p data-ar="فطيرة محشية باللحمة والجبن" data-en="Pie stuffed with meat and cheese">فطيرة محشية باللحمة والجبن</p>
+                        <div class="card-bottom">
+                            <span class="price" data-ar="30 د.إ" data-en="30 AED">30 د.إ</span>
+                            <button class="add-btn"><i class="fa-solid fa-plus"></i> <span data-ar="أضف" data-en="Add">أضف</span></button>
+                        </div>
+                    </div>
+                </div>
+                <!-- 8 -->
+                <div class="menu-card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1600891964092-4316c288032e?q=80&w=500&auto=format&fit=crop');"></div>
+                    <div class="card-info">
+                        <h3 data-ar="حمام محشي" data-en="Stuffed Pigeon">حمام محشي</h3>
+                        <p data-ar="حمام محشي بالأرز والكبد" data-en="Pigeon stuffed with rice and liver">حمام محشي بالأرز والكبد</p>
+                        <div class="card-bottom">
+                            <span class="price" data-ar="75 د.إ" data-en="75 AED">75 د.إ</span>
+                            <button class="add-btn"><i class="fa-solid fa-plus"></i> <span data-ar="أضف" data-en="Add">أضف</span></button>
+                        </div>
+                    </div>
+                </div>
+                <!-- 9 -->
+                <div class="menu-card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=500&auto=format&fit=crop');"></div>
+                    <div class="card-info">
+                        <h3 data-ar="كبدة إسكندراني" data-en="Alexandrian Liver">كبدة إسكندراني</h3>
+                        <p data-ar="كبدة مشوية بالتوابل الإسكندراني" data-en="Grilled liver with Alexandrian spices">كبدة مشوية بالتوابل الإسكندراني</p>
+                        <div class="card-bottom">
+                            <span class="price" data-ar="40 د.إ" data-en="40 AED">40 د.إ</span>
+                            <button class="add-btn"><i class="fa-solid fa-plus"></i> <span data-ar="أضف" data-en="Add">أضف</span></button>
+                        </div>
+                    </div>
+                </div>
+                <!-- 10 -->
+                <div class="menu-card">
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=500&auto=format&fit=crop');"></div>
+                    <div class="card-info">
+                        <h3 data-ar="طاجن بطاطس بالفراخ" data-en="Chicken Potato Tagine">طاجن بطاطس بالفراخ</h3>
+                        <p data-ar="طاجن بطاطس بالفراخ في الفرن" data-en="Oven-baked potato and chicken tagine">طاجن بطاطس بالفراخ في الفرن</p>
+                        <div class="card-bottom">
+                            <span class="price" data-ar="50 د.إ" data-en="50 AED">50 د.إ</span>
                             <button class="add-btn"><i class="fa-solid fa-plus"></i> <span data-ar="أضف" data-en="Add">أضف</span></button>
                         </div>
                     </div>
@@ -106,83 +186,37 @@
             </div>
         </section>
 
-        <!-- قسم المشروبات -->
+        <!-- قسم المشروبات (10 أصناف) -->
         <section id="drinks" class="menu-section">
             <h2 class="section-title" data-ar="المشروبات" data-en="Drinks">المشروبات</h2>
             <div class="menu-grid">
-                <div class="menu-card">
-                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1622597467836-f3824f2c1b2b?q=80&w=500&auto=format&fit=crop');"></div>
-                    <div class="card-info">
-                        <h3 data-ar="عصير قصب" data-en="Sugarcane Juice">عصير قصب</h3>
-                        <p data-ar="عصير قصب طازج منعش" data-en="Fresh and refreshing sugarcane juice">عصير قصب طازج منعش</p>
-                        <div class="card-bottom">
-                            <span class="price" data-ar="15 ج.م" data-en="15 EGP">15 ج.م</span>
-                            <button class="add-btn"><i class="fa-solid fa-plus"></i> <span data-ar="أضف" data-en="Add">أضف</span></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="menu-card">
-                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1544145945-f90425340c7e?q=80&w=500&auto=format&fit=crop');"></div>
-                    <div class="card-info">
-                        <h3 data-ar="عرقسوس" data-en="Licorice Drink">عرقسوس</h3>
-                        <p data-ar="عرقسوس مصري أصلي" data-en="Authentic Egyptian Licorice">عرقسوس مصري أصلي</p>
-                        <div class="card-bottom">
-                            <span class="price" data-ar="10 ج.م" data-en="10 EGP">10 ج.م</span>
-                            <button class="add-btn"><i class="fa-solid fa-plus"></i> <span data-ar="أضف" data-en="Add">أضف</span></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="menu-card">
-                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1571167530149-c1105da4c2c7?q=80&w=500&auto=format&fit=crop');"></div>
-                    <div class="card-info">
-                        <h3 data-ar="شاي مصري" data-en="Egyptian Tea">شاي مصري</h3>
-                        <p data-ar="شاي ثقيل بالنعناع" data-en="Heavy tea with mint">شاي ثقيل بالنعناع</p>
-                        <div class="card-bottom">
-                            <span class="price" data-ar="10 ج.م" data-en="10 EGP">10 ج.م</span>
-                            <button class="add-btn"><i class="fa-solid fa-plus"></i> <span data-ar="أضف" data-en="Add">أضف</span></button>
-                        </div>
-                    </div>
-                </div>
+                <div class="menu-card"><div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1622597467836-f3824f2c1b2b?q=80&w=500&auto=format&fit=crop');"></div><div class="card-info"><h3 data-ar="عصير قصب" data-en="Sugarcane Juice">عصير قصب</h3><p data-ar="عصير قصب طازج منعش" data-en="Fresh sugarcane juice">عصير قصب طازج منعش</p><div class="card-bottom"><span class="price" data-ar="12 د.إ" data-en="12 AED">12 د.إ</span><button class="add-btn"><i class="fa-solid fa-plus"></i> <span data-ar="أضف" data-en="Add">أضف</span></button></div></div></div>
+                <div class="menu-card"><div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1544145945-f90425340c7e?q=80&w=500&auto=format&fit=crop');"></div><div class="card-info"><h3 data-ar="عرقسوس" data-en="Licorice Drink">عرقسوس</h3><p data-ar="عرقسوس مصري أصلي" data-en="Authentic Egyptian Licorice">عرقسوس مصري أصلي</p><div class="card-bottom"><span class="price" data-ar="10 د.إ" data-en="10 AED">10 د.إ</span><button class="add-btn"><i class="fa-solid fa-plus"></i> <span data-ar="أضف" data-en="Add">أضف</span></button></div></div></div>
+                <div class="menu-card"><div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1571167530149-c1105da4c2c7?q=80&w=500&auto=format&fit=crop');"></div><div class="card-info"><h3 data-ar="شاي مصري" data-en="Egyptian Tea">شاي مصري</h3><p data-ar="شاي ثقيل بالنعناع" data-en="Heavy tea with mint">شاي ثقيل بالنعناع</p><div class="card-bottom"><span class="price" data-ar="8 د.إ" data-en="8 AED">8 د.إ</span><button class="add-btn"><i class="fa-solid fa-plus"></i> <span data-ar="أضف" data-en="Add">أضف</span></button></div></div></div>
+                <div class="menu-card"><div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?q=80&w=500&auto=format&fit=crop');"></div><div class="card-info"><h3 data-ar="كركديه" data-en="Hibiscus Tea">كركديه</h3><p data-ar="كركديه مصري منعش" data-en="Refreshing Egyptian Hibiscus">كركديه مصري منعش</p><div class="card-bottom"><span class="price" data-ar="10 د.إ" data-en="10 AED">10 د.إ</span><button class="add-btn"><i class="fa-solid fa-plus"></i> <span data-ar="أضف" data-en="Add">أضف</span></button></div></div></div>
+                <div class="menu-card"><div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1497534446932-c925b458314e?q=80&w=500&auto=format&fit=crop');"></div><div class="card-info"><h3 data-ar="عصير مانجو" data-en="Mango Juice">عصير مانجو</h3><p data-ar="عصير مانجو طازج" data-en="Fresh Mango Juice">عصير مانجو طازج</p><div class="card-bottom"><span class="price" data-ar="15 د.إ" data-en="15 AED">15 د.إ</span><button class="add-btn"><i class="fa-solid fa-plus"></i> <span data-ar="أضف" data-en="Add">أضف</span></button></div></div></div>
+                <div class="menu-card"><div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1600271886742-f049cd451bba?q=80&w=500&auto=format&fit=crop');"></div><div class="card-info"><h3 data-ar="عصير برتقال" data-en="Orange Juice">عصير برتقال</h3><p data-ar="عصير برتقال طازج" data-en="Fresh Orange Juice">عصير برتقال طازج</p><div class="card-bottom"><span class="price" data-ar="14 د.إ" data-en="14 AED">14 د.إ</span><button class="add-btn"><i class="fa-solid fa-plus"></i> <span data-ar="أضف" data-en="Add">أضف</span></button></div></div></div>
+                <div class="menu-card"><div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1556679343-c7306c1976bc?q=80&w=500&auto=format&fit=crop');"></div><div class="card-info"><h3 data-ar="ليمون بالنعناع" data-en="Lemon Mint">ليمون بالنعناع</h3><p data-ar="ليمون طازج مع النعناع" data-en="Fresh lemon with mint">ليمون طازج مع النعناع</p><div class="card-bottom"><span class="price" data-ar="12 د.إ" data-en="12 AED">12 د.إ</span><button class="add-btn"><i class="fa-solid fa-plus"></i> <span data-ar="أضف" data-en="Add">أضف</span></button></div></div></div>
+                <div class="menu-card"><div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1571091718767-18b5b1457add?q=80&w=500&auto=format&fit=crop');"></div><div class="card-info"><h3 data-ar="سوبيا" data-en="Sobia">سوبيا</h3><p data-ar="سوبيا مصرية أصلية" data-en="Authentic Egyptian Sobia">سوبيا مصرية أصلية</p><div class="card-bottom"><span class="price" data-ar="18 د.إ" data-en="18 AED">18 د.إ</span><button class="add-btn"><i class="fa-solid fa-plus"></i> <span data-ar="أضف" data-en="Add">أضف</span></button></div></div></div>
+                <div class="menu-card"><div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1570197788417-0e82375c9371?q=80&w=500&auto=format&fit=crop');"></div><div class="card-info"><h3 data-ar="تمر هندي" data-en="Tamarind Drink">تمر هندي</h3><p data-ar="تمر هندي مصري منعش" data-en="Refreshing Egyptian Tamarind">تمر هندي مصري منعش</p><div class="card-bottom"><span class="price" data-ar="10 د.إ" data-en="10 AED">10 د.إ</span><button class="add-btn"><i class="fa-solid fa-plus"></i> <span data-ar="أضف" data-en="Add">أضف</span></button></div></div></div>
+                <div class="menu-card"><div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1595981267035-7b04ca84a82d?q=80&w=500&auto=format&fit=crop');"></div><div class="card-info"><h3 data-ar="قهوة تركي" data-en="Turkish Coffee">قهوة تركي</h3><p data-ar="قهوة تركي أصلي" data-en="Authentic Turkish Coffee">قهوة تركي أصلي</p><div class="card-bottom"><span class="price" data-ar="12 د.إ" data-en="12 AED">12 د.إ</span><button class="add-btn"><i class="fa-solid fa-plus"></i> <span data-ar="أضف" data-en="Add">أضف</span></button></div></div></div>
             </div>
         </section>
 
-        <!-- قسم الحلويات -->
+        <!-- قسم الحلويات (10 أصناف) -->
         <section id="desserts" class="menu-section">
             <h2 class="section-title" data-ar="الحلويات الشرقية" data-en="Oriental Desserts">الحلويات الشرقية</h2>
             <div class="menu-grid">
-                <div class="menu-card">
-                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1519676867240-f03562e64548?q=80&w=500&auto=format&fit=crop');"></div>
-                    <div class="card-info">
-                        <h3 data-ar="أم علي" data-en="Om Ali">أم علي</h3>
-                        <p data-ar="أم علي بالمكسرات والقشطة" data-en="Om Ali with nuts and cream">أم علي بالمكسرات والقشطة</p>
-                        <div class="card-bottom">
-                            <span class="price" data-ar="40 ج.م" data-en="40 EGP">40 ج.م</span>
-                            <button class="add-btn"><i class="fa-solid fa-plus"></i> <span data-ar="أضف" data-en="Add">أضف</span></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="menu-card">
-                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?q=80&w=500&auto=format&fit=crop');"></div>
-                    <div class="card-info">
-                        <h3 data-ar="بسبوسة" data-en="Basbousa">بسبوسة</h3>
-                        <p data-ar="بسبوسة باللوز والقشطة" data-en="Basbousa with almonds and cream">بسبوسة باللوز والقشطة</p>
-                        <div class="card-bottom">
-                            <span class="price" data-ar="25 ج.م" data-en="25 EGP">25 ج.م</span>
-                            <button class="add-btn"><i class="fa-solid fa-plus"></i> <span data-ar="أضف" data-en="Add">أضف</span></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="menu-card">
-                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1551024506-0bccd828d307?q=80&w=500&auto=format&fit=crop');"></div>
-                    <div class="card-info">
-                        <h3 data-ar="كنافة" data-en="Konafa">كنافة</h3>
-                        <p data-ar="كنافة بالجبنة والمكسرات" data-en="Konafa with cheese and nuts">كنافة بالجبنة والمكسرات</p>
-                        <div class="card-bottom">
-                            <span class="price" data-ar="35 ج.م" data-en="35 EGP">35 ج.م</span>
-                            <button class="add-btn"><i class="fa-solid fa-plus"></i> <span data-ar="أضف" data-en="Add">أضف</span></button>
-                        </div>
-                    </div>
-                </div>
+                <div class="menu-card"><div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1519676867240-f03562e64548?q=80&w=500&auto=format&fit=crop');"></div><div class="card-info"><h3 data-ar="أم علي" data-en="Om Ali">أم علي</h3><p data-ar="أم علي بالمكسرات والقشطة" data-en="Om Ali with nuts and cream">أم علي بالمكسرات والقشطة</p><div class="card-bottom"><span class="price" data-ar="30 د.إ" data-en="30 AED">30 د.إ</span><button class="add-btn"><i class="fa-solid fa-plus"></i> <span data-ar="أضف" data-en="Add">أضف</span></button></div></div></div>
+                <div class="menu-card"><div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?q=80&w=500&auto=format&fit=crop');"></div><div class="card-info"><h3 data-ar="بسبوسة" data-en="Basbousa">بسبوسة</h3><p data-ar="بسبوسة باللوز والقشطة" data-en="Basbousa with almonds and cream">بسبوسة باللوز والقشطة</p><div class="card-bottom"><span class="price" data-ar="20 د.إ" data-en="20 AED">20 د.إ</span><button class="add-btn"><i class="fa-solid fa-plus"></i> <span data-ar="أضف" data-en="Add">أضف</span></button></div></div></div>
+                <div class="menu-card"><div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1551024506-0bccd828d307?q=80&w=500&auto=format&fit=crop');"></div><div class="card-info"><h3 data-ar="كنافة" data-en="Konafa">كنافة</h3><p data-ar="كنافة بالجبنة والمكسرات" data-en="Konafa with cheese and nuts">كنافة بالجبنة والمكسرات</p><div class="card-bottom"><span class="price" data-ar="25 د.إ" data-en="25 AED">25 د.إ</span><button class="add-btn"><i class="fa-solid fa-plus"></i> <span data-ar="أضف" data-en="Add">أضف</span></button></div></div></div>
+                <div class="menu-card"><div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1587314168485-3236d6710814?q=80&w=500&auto=format&fit=crop');"></div><div class="card-info"><h3 data-ar="بقلاوة" data-en="Baklava">بقلاوة</h3><p data-ar="بقلاوة بالفستق الحلبي" data-en="Baklava with pistachio">بقلاوة بالفستق الحلبي</p><div class="card-bottom"><span class="price" data-ar="35 د.إ" data-en="35 AED">35 د.إ</span><button class="add-btn"><i class="fa-solid fa-plus"></i> <span data-ar="أضف" data-en="Add">أضف</span></button></div></div></div>
+                <div class="menu-card"><div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=500&auto=format&fit=crop');"></div><div class="card-info"><h3 data-ar="قطايف" data-en="Qatayef">قطايف</h3><p data-ar="قطايف بالمكسرات والقشطة" data-en="Qatayef with nuts and cream">قطايف بالمكسرات والقشطة</p><div class="card-bottom"><span class="price" data-ar="28 د.إ" data-en="28 AED">28 د.إ</span><button class="add-btn"><i class="fa-solid fa-plus"></i> <span data-ar="أضف" data-en="Add">أضف</span></button></div></div></div>
+                <div class="menu-card"><div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1563805042-7684c019e1cb?q=80&w=500&auto=format&fit=crop');"></div><div class="card-info"><h3 data-ar="رز بلبن" data-en="Rice Pudding">رز بلبن</h3><p data-ar="رز بلبن بالقشطة" data-en="Rice pudding with cream">رز بلبن بالقشطة</p><div class="card-bottom"><span class="price" data-ar="18 د.إ" data-en="18 AED">18 د.إ</span><button class="add-btn"><i class="fa-solid fa-plus"></i> <span data-ar="أضف" data-en="Add">أضف</span></button></div></div></div>
+                <div class="menu-card"><div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?q=80&w=500&auto=format&fit=crop');"></div><div class="card-info"><h3 data-ar="مهلبية" data-en="Muhallebi">مهلبية</h3><p data-ar="مهلبية بالمكسرات" data-en="Muhallebi with nuts">مهلبية بالمكسرات</p><div class="card-bottom"><span class="price" data-ar="15 د.إ" data-en="15 AED">15 د.إ</span><button class="add-btn"><i class="fa-solid fa-plus"></i> <span data-ar="أضف" data-en="Add">أضف</span></button></div></div></div>
+                <div class="menu-card"><div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1582716401301-b2407dc7563d?q=80&w=500&auto=format&fit=crop');"></div><div class="card-info"><h3 data-ar="زلابية" data-en="Zalabia">زلابية</h3><p data-ar="زلابية مقرمشة بالعسل" data-en="Crispy Zalabia with honey">زلابية مقرمشة بالعسل</p><div class="card-bottom"><span class="price" data-ar="15 د.إ" data-en="15 AED">15 د.إ</span><button class="add-btn"><i class="fa-solid fa-plus"></i> <span data-ar="أضف" data-en="Add">أضف</span></button></div></div></div>
+                <div class="menu-card"><div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1600326145552-327cf6e0c1c7?q=80&w=500&auto=format&fit=crop');"></div><div class="card-info"><h3 data-ar="بلح الشام" data-en="Balah El Sham">بلح الشام</h3><p data-ar="بلح الشام المحشي بالقشطة" data-en="Balah El Sham stuffed with cream">بلح الشام المحشي بالقشطة</p><div class="card-bottom"><span class="price" data-ar="22 د.إ" data-en="22 AED">22 د.إ</span><button class="add-btn"><i class="fa-solid fa-plus"></i> <span data-ar="أضف" data-en="Add">أضف</span></button></div></div></div>
+                <div class="menu-card"><div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1599785209707-a456fc1337bb?q=80&w=500&auto=format&fit=crop');"></div><div class="card-info"><h3 data-ar="كاسترد" data-en="Custard">كاسترد</h3><p data-ar="كاسترد بالفواكه الطازجة" data-en="Custard with fresh fruits">كاسترد بالفواكه الطازجة</p><div class="card-bottom"><span class="price" data-ar="18 د.إ" data-en="18 AED">18 د.إ</span><button class="add-btn"><i class="fa-solid fa-plus"></i> <span data-ar="أضف" data-en="Add">أضف</span></button></div></div></div>
             </div>
         </section>
 
@@ -194,23 +228,4 @@
                 <form id="checkout-form">
                     <div class="form-group">
                         <label data-ar="الاسم بالكامل" data-en="Full Name">الاسم بالكامل</label>
-                        <input type="text" id="cust-name" required placeholder="مثال: أحمد محمد">
-                    </div>
-                    <div class="form-group">
-                        <label data-ar="رقم الهاتف" data-en="Phone Number">رقم الهاتف</label>
-                        <input type="tel" id="cust-phone" required placeholder="مثال: 01012345678">
-                    </div>
-                    <div class="form-group">
-                        <label data-ar="العنوان بالتفصيل" data-en="Detailed Address">العنوان بالتفصيل</label>
-                        <textarea id="cust-address" required placeholder="مثال: شارع التحرير، الدور الثالث، شقة 5"></textarea>
-                    </div>
-                    <button type="submit" class="btn-submit" data-ar="تأكيد الطلب" data-en="Confirm Order">تأكيد الطلب</button>
-                </form>
-            </div>
-        </div>
-
-    </main>
-
-    <script src="script.js"></script>
-</body>
-</html>
+                        <input type
