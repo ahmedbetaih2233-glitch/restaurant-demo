@@ -9,16 +9,13 @@ if (langToggleBtn) {
         const currentLang = htmlElement.getAttribute('lang');
         const newLang = currentLang === 'ar' ? 'en' : 'ar';
 
-        // تغيير لغة واتجاه الصفحة
         htmlElement.setAttribute('lang', newLang);
         htmlElement.setAttribute('dir', newLang === 'ar' ? 'rtl' : 'ltr');
 
-        // تغيير نص زر التبديل
         langToggleBtn.innerHTML = newLang === 'ar'
             ? '<i class="fa-solid fa-globe"></i> <span>English</span>'
             : '<i class="fa-solid fa-globe"></i> <span>العربية</span>';
 
-        // تبديل النصوص في جميع العناصر التي تحتوي على data-ar و data-en
         document.querySelectorAll('[data-ar]').forEach(el => {
             const text = el.getAttribute(`data-${newLang}`);
             if (text) {
@@ -26,11 +23,13 @@ if (langToggleBtn) {
             }
         });
 
-        // تغيير عنوان الصفحة (Title)
         const titleElement = document.querySelector('title');
         if (titleElement) {
             document.title = titleElement.getAttribute(`data-${newLang}`);
         }
+        
+        // تحديث السلة عند تغيير اللغة
+        updateCartUI();
     });
 }
 
@@ -39,16 +38,12 @@ if (langToggleBtn) {
 // =========================================
 document.querySelectorAll('.nav-links a').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-        e.preventDefault(); // منع السلوك الافتراضي
-
-        // إزالة الكلاس active من جميع الروابط
+        e.preventDefault();
         document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-        // إضافة الكلاس active للرابط الذي تم الضغط عليه
         this.classList.add('active');
 
         const targetId = this.getAttribute('href');
         const targetSection = document.querySelector(targetId);
-
         if (targetSection) {
             targetSection.scrollIntoView({ behavior: 'smooth' });
         }
@@ -56,126 +51,206 @@ document.querySelectorAll('.nav-links a').forEach(anchor => {
 });
 
 // =========================================
-// 3. كود عداد السلة (إضافة الأصناف)
+// 3. كود سلة المشتريات (الحقيقية)
 // =========================================
-let cartCount = 0;
+let cart = [];
 const cartCountElement = document.querySelector('.cart-count');
-const addButtons = document.querySelectorAll('.add-btn');
+const cartItemsContainer = document.getElementById('cart-items');
+const subtotalElement = document.getElementById('subtotal');
+const discountElement = document.getElementById('discount');
+const totalElement = document.getElementById('total');
+const cartModal = document.getElementById('cart-modal');
+const closeCartModalBtn = document.querySelector('.close-cart-modal');
+const goToCheckoutBtn = document.getElementById('go-to-checkout');
+const checkoutModal = document.getElementById('checkout-modal');
 
-addButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        cartCount++;
-        if (cartCountElement) {
-            cartCountElement.textContent = cartCount;
+function updateCartUI() {
+    if (cartItemsContainer) {
+        cartItemsContainer.innerHTML = '';
+    }
+
+    let subtotal = 0;
+    let totalItems = 0;
+    const isArabic = document.documentElement.getAttribute('lang') === 'ar';
+
+    if (cart.length === 0) {
+        if (cartItemsContainer) {
+            cartItemsContainer.innerHTML = `<p style="text-align:center; color:#7A6A5F; padding:20px;">${isArabic ? 'السلة فارغة' : 'Cart is empty'}</p>`;
         }
+    } else {
+        cart.forEach((item, index) => {
+            const itemTotal = item.price * item.quantity;
+            subtotal += itemTotal;
+            totalItems += item.quantity;
 
-        // تأثير بصري بسيط عند الإضافة
+            const itemDiv = document.createElement('div');
+            itemDiv.classList.add('cart-item');
+            itemDiv.innerHTML = `
+                <div class="cart-item-info">
+                    <span class="cart-item-name">${item.name}</span>
+                    <span class="cart-item-price">${item.price} ${isArabic ? 'د.إ' : 'AED'}</span>
+                </div>
+                <div class="cart-item-controls">
+                    <button class="qty-btn decrease" data-index="${index}">-</button>
+                    <span class="item-qty">${item.quantity}</span>
+                    <button class="qty-btn increase" data-index="${index}">+</button>
+                    <button class="remove-item" data-index="${index}"><i class="fa-solid fa-trash"></i></button>
+                </div>
+            `;
+            if (cartItemsContainer) {
+                cartItemsContainer.appendChild(itemDiv);
+            }
+        });
+    }
+
+    const discountRate = 0.15;
+    const discountAmount = subtotal * discountRate;
+    const total = subtotal - discountAmount;
+    const currency = isArabic ? 'د.إ' : 'AED';
+
+    if (subtotalElement) subtotalElement.textContent = `${subtotal.toFixed(2)} ${currency}`;
+    if (discountElement) discountElement.textContent = `${discountAmount.toFixed(2)} ${currency}`;
+    if (totalElement) totalElement.textContent = `${total.toFixed(2)} ${currency}`;
+    if (cartCountElement) cartCountElement.textContent = totalItems;
+
+    // ربط أحداث الأزرار
+    document.querySelectorAll('.qty-btn.increase').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const index = e.target.getAttribute('data-index');
+            cart[index].quantity++;
+            updateCartUI();
+        });
+    });
+
+    document.querySelectorAll('.qty-btn.decrease').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const index = e.target.getAttribute('data-index');
+            if (cart[index].quantity > 1) {
+                cart[index].quantity--;
+            } else {
+                cart.splice(index, 1);
+            }
+            updateCartUI();
+        });
+    });
+
+    document.querySelectorAll('.remove-item').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const index = e.target.closest('.remove-item').getAttribute('data-index');
+            cart.splice(index, 1);
+            updateCartUI();
+        });
+    });
+}
+
+function addToCart(name, price) {
+    const existingItem = cart.find(item => item.name === name);
+    if (existingItem) {
+        existingItem.quantity++;
+    } else {
+        cart.push({ name: name, price: price, quantity: 1 });
+    }
+    updateCartUI();
+}
+
+document.querySelectorAll('.add-btn').forEach(button => {
+    button.addEventListener('click', (e) => {
+        const card = e.target.closest('.menu-card');
+        const name = card.querySelector('h3').getAttribute('data-ar');
+        const priceText = card.querySelector('.price').getAttribute('data-ar');
+        const price = parseFloat(priceText.replace(' د.إ', ''));
+        
+        addToCart(name, price);
+
         const originalHTML = button.innerHTML;
         const isArabic = document.documentElement.getAttribute('lang') === 'ar';
-
-        button.innerHTML = isArabic
-            ? '<i class="fa-solid fa-check"></i> تمت'
-            : '<i class="fa-solid fa-check"></i> Added';
-        button.style.backgroundColor = '#2ecc71'; // لون أخضر
-
+        button.innerHTML = isArabic ? '<i class="fa-solid fa-check"></i> تمت' : '<i class="fa-solid fa-check"></i> Added';
+        button.style.backgroundColor = '#2ecc71';
         setTimeout(() => {
             button.innerHTML = originalHTML;
-            button.style.backgroundColor = '#6F4E37'; // رجوع للون البني الأساسي
+            button.style.backgroundColor = '#6F4E37';
         }, 1000);
     });
 });
 
 // =========================================
-// 4. زر "اطلب الآن" في قسم الترحيب
+// 4. فتح وإغلاق نافذة السلة
 // =========================================
-const orderBtn = document.querySelector('.btn-order');
-if (orderBtn) {
-    orderBtn.addEventListener('click', () => {
-        const mealsSection = document.querySelector('#meals');
-        if (mealsSection) {
-            mealsSection.scrollIntoView({ behavior: 'smooth' });
-        }
+const cartIcon = document.querySelector('.cart-icon');
+
+if (cartIcon && cartModal) {
+    cartIcon.addEventListener('click', () => {
+        updateCartUI();
+        cartModal.style.display = 'flex';
     });
 }
 
-// =========================================
-// 5. كود نافذة إتمام الطلب (Checkout Modal)
-// =========================================
-const modal = document.getElementById('checkout-modal');
-const cartIcon = document.querySelector('.cart-icon');
-const closeModalBtn = document.querySelector('.close-modal');
-const checkoutForm = document.getElementById('checkout-form');
+if (closeCartModalBtn && cartModal) {
+    closeCartModalBtn.addEventListener('click', () => {
+        cartModal.style.display = 'none';
+    });
+}
 
-// فتح النافذة عند الضغط على أيقونة السلة
-if (cartIcon && modal) {
-    cartIcon.addEventListener('click', () => {
-        if (cartCount === 0) {
+window.addEventListener('click', (e) => {
+    if (e.target === cartModal) {
+        cartModal.style.display = 'none';
+    }
+});
+
+// =========================================
+// 5. الانتقال من السلة إلى إتمام الطلب
+// =========================================
+if (goToCheckoutBtn && cartModal && checkoutModal) {
+    goToCheckoutBtn.addEventListener('click', () => {
+        if (cart.length === 0) {
             alert(document.documentElement.getAttribute('lang') === 'ar'
                 ? 'السلة فارغة! أضف بعض الأصناف أولاً.'
                 : 'Your cart is empty! Add some items first.');
             return;
         }
-        modal.style.display = 'flex';
-    });
-}
-
-// إغلاق النافذة بزر X
-if (closeModalBtn && modal) {
-    closeModalBtn.addEventListener('click', () => {
-        modal.style.display = 'none';
-    });
-}
-
-// إغلاق النافذة عند الضغط خارج المحتوى
-if (modal) {
-    window.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            modal.style.display = 'none';
-        }
-    });
-}
-
-// تأكيد الطلب
-if (checkoutForm && modal) {
-    checkoutForm.addEventListener('submit', (e) => {
-        e.preventDefault(); // منع إعادة تحميل الصفحة
-
-        const isArabic = document.documentElement.getAttribute('lang') === 'ar';
-
-        alert(isArabic
-            ? 'تم استلام طلبك بنجاح! سيصلك خلال 30-45 دقيقة. شكراً لثقتك بنا.'
-            : 'Your order has been received successfully! It will arrive within 30-45 minutes. Thank you!');
-
-        checkoutForm.reset();
-        modal.style.display = 'none';
-        cartCount = 0;
-        if (cartCountElement) {
-            cartCountElement.textContent = 0;
-        }
+        cartModal.style.display = 'none';
+        checkoutModal.style.display = 'flex';
     });
 }
 
 // =========================================
-// 6. كود فتح وإغلاق القائمة الجانبية (للموبايل)
+// 6. تأكيد الطلب
+// =========================================
+const checkoutForm = document.getElementById('checkout-form');
+if (checkoutForm && checkoutModal) {
+    checkoutForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const isArabic = document.documentElement.getAttribute('lang') === 'ar';
+        
+        alert(isArabic
+            ? 'تم استلام طلبك بنجاح! سيصلك خلال 30-45 دقيقة. شكراً لثقتك بنا.'
+            : 'Your order has been received successfully! It will arrive within 30-45 minutes. Thank you!');
+        
+        checkoutForm.reset();
+        checkoutModal.style.display = 'none';
+        cart = [];
+        updateCartUI();
+    });
+}
+
+// =========================================
+// 7. كود فتح وإغلاق القائمة الجانبية (للموبايل)
 // =========================================
 const menuToggle = document.getElementById('menu-toggle');
 const sidebar = document.getElementById('sidebar');
 
 if (menuToggle && sidebar) {
-    // فتح / إغلاق القائمة عند الضغط على زر الهامبرجر
     menuToggle.addEventListener('click', (e) => {
-        e.stopPropagation(); // منع انتشار الحدث
+        e.stopPropagation();
         sidebar.classList.toggle('active');
     });
 
-    // إغلاق القائمة تلقائياً عند الضغط على أي رابط داخلها
     document.querySelectorAll('.nav-links a').forEach(link => {
         link.addEventListener('click', () => {
             sidebar.classList.remove('active');
         });
     });
 
-    // إغلاق القائمة عند الضغط في أي مكان خارجها
     document.addEventListener('click', (e) => {
         if (sidebar.classList.contains('active') && !sidebar.contains(e.target) && e.target !== menuToggle) {
             sidebar.classList.remove('active');
