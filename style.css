@@ -1,1 +1,51 @@
+/* ... (نفس الكود السابق مع إضافة التالي) ... */
 
+/* تنسيق زر تغيير اللغة */
+.lang-btn {
+    background-color: transparent;
+    border: 1px solid #d4af37;
+    color: #d4af37;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    font-size: 14px;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.lang-btn:hover {
+    background-color: #d4af37;
+    color: #111;
+}
+
+/* --- دعم اللغة الإنجليزية (عندما يكون dir="ltr") --- */
+html[dir="ltr"] .sidebar {
+    right: auto;
+    left: 0;
+    border-left: none;
+    border-right: 2px solid #d4af37;
+}
+html[dir="ltr"] .nav-links a {
+    border-right: none;
+    border-left: 4px solid transparent;
+}
+html[dir="ltr"] .nav-links a:hover, 
+html[dir="ltr"] .nav-links a.active {
+    border-right: none;
+    border-left: 4px solid #d4af37;
+    padding-right: 20px;
+    padding-left: 30px;
+}
+html[dir="ltr"] .content {
+    margin-right: 0;
+    margin-left: 250px;
+}
+html[dir="ltr"] .hero-text h1, 
+html[dir="ltr"] .hero-text p {
+    text-align: left;
+}
+html[dir="ltr"] .card-bottom {
+    flex-direction: row-reverse;
+}
