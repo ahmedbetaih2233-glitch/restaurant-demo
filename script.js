@@ -1,5 +1,5 @@
 // =========================================
-// 1. تبديل اللغة (عربي / إنجليزي)
+// 1. كود تبديل اللغة (عربي / إنجليزي)
 // =========================================
 const langToggleBtn = document.getElementById('lang-toggle');
 const htmlElement = document.documentElement;
@@ -33,7 +33,7 @@ if (langToggleBtn) {
 }
 
 // =========================================
-// 2. التنقل السلس (Smooth Scroll)
+// 2. كود التنقل السلس (Smooth Scroll)
 // =========================================
 document.querySelectorAll('.nav-links a').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -50,7 +50,7 @@ document.querySelectorAll('.nav-links a').forEach(anchor => {
 });
 
 // =========================================
-// 3. سلة المشتريات (الحقيقية + الشريط السفلي)
+// 3. كود سلة المشتريات (مع الشريط السفلي)
 // =========================================
 let cart = [];
 const cartItemsContainer = document.getElementById('cart-items');
@@ -66,8 +66,6 @@ const checkoutModal = document.getElementById('checkout-modal');
 const bottomCartBar = document.getElementById('bottom-cart-bar');
 const openCartDetails = document.getElementById('open-cart-details');
 const barItemCount = document.getElementById('bar-item-count');
-const barSubtotal = document.getElementById('bar-subtotal');
-const barDiscount = document.getElementById('bar-discount');
 const barTotal = document.getElementById('bar-total');
 const barGoCheckout = document.getElementById('bar-go-checkout');
 const cartCountElements = document.querySelectorAll('.cart-count');
@@ -124,20 +122,15 @@ function updateCartUI() {
     const discountAmount = subtotal * discountRate;
     const total = subtotal - discountAmount;
 
-    // نافذة السلة
     if (subtotalElement) subtotalElement.textContent = `${subtotal.toFixed(2)} ${currency}`;
     if (discountElement) discountElement.textContent = `${discountAmount.toFixed(2)} ${currency}`;
     if (totalElement) totalElement.textContent = `${total.toFixed(2)} ${currency}`;
 
-    // الشريط السفلي
     if (barItemCount) barItemCount.textContent = totalItems;
-    if (barSubtotal) barSubtotal.textContent = `${subtotal.toFixed(2)} ${currency}`;
-    if (barDiscount) barDiscount.textContent = `${discountAmount.toFixed(2)} ${currency}`;
     if (barTotal) barTotal.textContent = `${total.toFixed(2)} ${currency}`;
 
     cartCountElements.forEach(el => el.textContent = totalItems);
 
-    // ربط أزرار الكمية
     document.querySelectorAll('.qty-btn.increase').forEach(btn => {
         btn.addEventListener('click', (e) => {
             const index = e.target.getAttribute('data-index');
@@ -182,7 +175,7 @@ document.querySelectorAll('.add-btn').forEach(button => {
         const card = e.target.closest('.menu-card');
         const name = card.querySelector('h3').getAttribute('data-ar');
         const priceText = card.querySelector('.price').getAttribute('data-ar');
-        const price = parseFloat(priceText.replace(' د.إ', '').replace(' د.إ', ''));
+        const price = parseFloat(priceText.replace(' د.إ', ''));
         
         addToCart(name, price);
 
@@ -198,8 +191,7 @@ document.querySelectorAll('.add-btn').forEach(button => {
 });
 
 // =========================================
-// 4. فتح نافذة السلة التفصيلية
-// =========================================
+// 4. فتح وإغلاق نافذة السلة التفصيلية// =========================================
 if (openCartDetails && cartModal) {
     openCartDetails.addEventListener('click', () => {
         if (cart.length === 0) {
@@ -265,23 +257,7 @@ if (checkoutForm && checkoutModal) {
 }
 
 // =========================================
-// 7. إغلاق نافذة إتمام الطلب
-// =========================================
-const closeModalBtn = document.querySelector('.close-modal');
-if (closeModalBtn && checkoutModal) {
-    closeModalBtn.addEventListener('click', () => {
-        checkoutModal.style.display = 'none';
-    });
-}
-
-window.addEventListener('click', (e) => {
-    if (e.target === checkoutModal) {
-        checkoutModal.style.display = 'none';
-    }
-});
-
-// =========================================
-// 8. قائمة الموبايل
+// 7. كود فتح وإغلاق القائمة الجانبية (للموبايل)
 // =========================================
 const menuToggle = document.getElementById('menu-toggle');
 const sidebar = document.getElementById('sidebar');
@@ -305,5 +281,5 @@ if (menuToggle && sidebar) {
     });
 }
 
-// تهيئة أولية
+// تهيئة أولية للسلة
 updateCartUI();
