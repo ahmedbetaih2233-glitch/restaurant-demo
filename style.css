@@ -513,3 +513,57 @@ html[dir="ltr"] .nav-links a i {
     .section-title { font-size: 26px; }
     .menu-grid { grid-template-columns: 1fr; }
 }
+/* =========================================
+   صندوق العروض المتحرك
+   ========================================= */
+.offer-box {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    background: linear-gradient(135deg, #6F4E37, #D4A373);
+    color: #fff;
+    padding: 15px 30px;
+    border-radius: 50px;
+    box-shadow: 0 10px 25px rgba(111, 78, 55, 0.3);
+    margin-top: 20px;
+    animation: float 3s ease-in-out infinite, glow 2s alternate infinite;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+.offer-box:hover {
+    transform: scale(1.05);
+}
+.offer-box i {
+    font-size: 24px;
+    color: #fff;
+}
+.offer-text {
+    position: relative;
+    height: 30px;
+    overflow: hidden;
+    font-weight: bold;
+    font-size: 18px;
+}
+.offer-item {
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    animation: slideOffer 9s infinite;
+}
+
+/* حركات (Animations) */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0px); }
+}
+@keyframes glow {
+    from { box-shadow: 0 10px 25px rgba(111, 78, 55, 0.3); }
+    to { box-shadow: 0 10px 35px rgba(212, 163, 115, 0.7); }
+}
+@keyframes slideOffer {
+    0%, 25% { transform: translateY(0); }
+    33%, 58% { transform: translateY(-30px); }
+    66%, 91% { transform: translateY(-60px); }
+    100% { transform: translateY(0); }
+}
