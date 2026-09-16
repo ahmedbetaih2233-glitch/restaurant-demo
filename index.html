@@ -37,7 +37,7 @@
     <!-- المحتوى الرئيسي -->
     <main class="content">
         
-        <!-- قسم الترحيب -->
+        <!-- قسم الترحيب مع العروض المتحركة -->
         <section id="home" class="hero-section">
             <div class="hero-overlay"></div>
             <div class="hero-text">
@@ -59,6 +59,7 @@
         <section id="meals" class="menu-section">
             <h2 class="section-title" data-ar="الوجبات الرئيسية" data-en="Main Meals">الوجبات الرئيسية</h2>
             <div class="menu-grid">
+                <!-- 1 -->
                 <div class="menu-card">
                     <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1512058564366-18510be2db19?q=80&w=500&auto=format&fit=crop');">
                         <span class="card-badge" data-ar="الأكثر طلباً" data-en="Best Seller">الأكثر طلباً</span>
@@ -72,6 +73,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- 2 -->
                 <div class="menu-card">
                     <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1547592180-85f173990554?q=80&w=500&auto=format&fit=crop');"></div>
                     <div class="card-info">
@@ -83,6 +85,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- 3 -->
                 <div class="menu-card">
                     <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1544025162-d76690b67fbd?q=80&w=500&auto=format&fit=crop');">
                         <span class="card-badge discount-badge" data-ar="خصم 25%" data-en="25% OFF">خصم 25%</span>
@@ -96,6 +99,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- 4 -->
                 <div class="menu-card">
                     <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1626200419199-391ae4be7a41?q=80&w=500&auto=format&fit=crop');"></div>
                     <div class="card-info">
@@ -107,6 +111,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- 5 -->
                 <div class="menu-card">
                     <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1603105037880-880cd4edfb0d?q=80&w=500&auto=format&fit=crop');"></div>
                     <div class="card-info">
@@ -118,6 +123,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- 6 -->
                 <div class="menu-card">
                     <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1589302168068-964664d93dc0?q=80&w=500&auto=format&fit=crop');"></div>
                     <div class="card-info">
@@ -129,6 +135,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- 7 -->
                 <div class="menu-card">
                     <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=500&auto=format&fit=crop');"></div>
                     <div class="card-info">
@@ -140,6 +147,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- 8 -->
                 <div class="menu-card">
                     <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1600891964092-4316c288032e?q=80&w=500&auto=format&fit=crop');"></div>
                     <div class="card-info">
@@ -151,6 +159,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- 9 -->
                 <div class="menu-card">
                     <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=500&auto=format&fit=crop');"></div>
                     <div class="card-info">
@@ -162,6 +171,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- 10 -->
                 <div class="menu-card">
                     <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=500&auto=format&fit=crop');"></div>
                     <div class="card-info">
@@ -176,7 +186,7 @@
             </div>
         </section>
 
-        <!-- قسم المشروبات -->
+        <!-- قسم المشروبات (10 أصناف) -->
         <section id="drinks" class="menu-section">
             <h2 class="section-title" data-ar="المشروبات" data-en="Drinks">المشروبات</h2>
             <div class="menu-grid">
@@ -193,7 +203,7 @@
             </div>
         </section>
 
-        <!-- قسم الحلويات -->
+        <!-- قسم الحلويات (10 أصناف) -->
         <section id="desserts" class="menu-section">
             <h2 class="section-title" data-ar="الحلويات الشرقية" data-en="Oriental Desserts">الحلويات الشرقية</h2>
             <div class="menu-grid">
@@ -210,6 +220,58 @@
             </div>
         </section>
 
+        <!-- نافذة سلة المشتريات التفصيلية -->
+        <div id="cart-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-cart-modal">&times;</span>
+                <h2 data-ar="سلة المشتريات" data-en="Shopping Cart">سلة المشتريات</h2>
+                
+                <div id="cart-items" class="cart-items">
+                    <!-- سيتم إضافة الأصناف هنا ديناميكياً -->
+                </div>
+
+                <div class="cart-summary">
+                    <div class="summary-row">
+                        <span data-ar="المجموع الفرعي:" data-en="Subtotal:">المجموع الفرعي:</span>
+                        <span id="subtotal">0 د.إ</span>
+                    </div>
+                    <div class="summary-row discount-row">
+                        <span data-ar="الخصم (15%):" data-en="Discount (15%):">الخصم (15%):</span>
+                        <span id="discount">0 د.إ</span>
+                    </div>
+                    <div class="summary-row total-row">
+                        <span data-ar="الإجمالي:" data-en="Total:">الإجمالي:</span>
+                        <span id="total">0 د.إ</span>
+                    </div>
+                </div>
+
+                <button class="btn-submit" id="go-to-checkout" data-ar="إتمام الطلب" data-en="Proceed to Checkout">إتمام الطلب</button>
+            </div>
+        </div>
+
+        <!-- نافذة إتمام الطلب -->
+        <div id="checkout-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2 data-ar="إتمام الطلب" data-en="Checkout">إتمام الطلب</h2>
+                <form id="checkout-form">
+                    <div class="form-group">
+                        <label data-ar="الاسم بالكامل" data-en="Full Name">الاسم بالكامل</label>
+                        <input type="text" id="cust-name" required placeholder="مثال: أحمد محمد">
+                    </div>
+                    <div class="form-group">
+                        <label data-ar="رقم الهاتف" data-en="Phone Number">رقم الهاتف</label>
+                        <input type="tel" id="cust-phone" required placeholder="مثال: 0501234567">
+                    </div>
+                    <div class="form-group">
+                        <label data-ar="العنوان بالتفصيل" data-en="Detailed Address">العنوان بالتفصيل</label>
+                        <textarea id="cust-address" required placeholder="مثال: شارع الشيخ زايد، مبنى 5، شقة 10"></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit" data-ar="تأكيد الطلب" data-en="Confirm Order">تأكيد الطلب</button>
+                </form>
+            </div>
+        </div>
+
     </main>
 
     <!-- شريط السلة السفلي العائم -->
@@ -220,78 +282,15 @@
                 <span class="cart-count">0</span>
             </div>
             <div class="cart-bar-text">
-                <span data-ar="سلة المشتريات" data-en="Shopping Cart">سلة المشتريات</span>
+                <span data-ar="سلة المشتريات" data-en="Cart">سلة المشتريات</span>
                 <small><span id="bar-item-count">0</span> <span data-ar="صنف" data-en="items">صنف</span></small>
             </div>
         </div>
-        <div class="cart-bar-middle">
-            <div class="bar-summary">
-                <span data-ar="المجموع:" data-en="Subtotal:">المجموع:</span>
-                <strong id="bar-subtotal">0 د.إ</strong>
-            </div>
-            <div class="bar-summary discount-text">
-                <span data-ar="الخصم:" data-en="Discount:">الخصم:</span>
-                <strong id="bar-discount">0 د.إ</strong>
-            </div>
-            <div class="bar-summary total-text">
-                <span data-ar="الإجمالي:" data-en="Total:">الإجمالي:</span>
-                <strong id="bar-total">0 د.إ</strong>
-            </div>
-        </div>
+        <div class="cart-bar-total" id="bar-total">0 د.إ</div>
         <button class="btn-bar-checkout" id="bar-go-checkout">
             <span data-ar="إتمام الطلب" data-en="Checkout">إتمام الطلب</span>
             <i class="fa-solid fa-arrow-left"></i>
         </button>
-    </div>
-
-    <!-- نافذة سلة المشتريات التفصيلية -->
-    <div id="cart-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-cart-modal">&times;</span>
-            <h2 data-ar="سلة المشتريات" data-en="Shopping Cart">سلة المشتريات</h2>
-            
-            <div id="cart-items" class="cart-items"></div>
-
-            <div class="cart-summary">
-                <div class="summary-row">
-                    <span data-ar="المجموع الفرعي:" data-en="Subtotal:">المجموع الفرعي:</span>
-                    <span id="subtotal">0 د.إ</span>
-                </div>
-                <div class="summary-row discount-row">
-                    <span data-ar="الخصم (15%):" data-en="Discount (15%):">الخصم (15%):</span>
-                    <span id="discount">0 د.إ</span>
-                </div>
-                <div class="summary-row total-row">
-                    <span data-ar="الإجمالي:" data-en="Total:">الإجمالي:</span>
-                    <span id="total">0 د.إ</span>
-                </div>
-            </div>
-
-            <button class="btn-submit" id="go-to-checkout" data-ar="إتمام الطلب" data-en="Proceed to Checkout">إتمام الطلب</button>
-        </div>
-    </div>
-
-    <!-- نافذة إتمام الطلب -->
-    <div id="checkout-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h2 data-ar="إتمام الطلب" data-en="Checkout">إتمام الطلب</h2>
-            <form id="checkout-form">
-                <div class="form-group">
-                    <label data-ar="الاسم بالكامل" data-en="Full Name">الاسم بالكامل</label>
-                    <input type="text" id="cust-name" required placeholder="مثال: أحمد محمد">
-                </div>
-                <div class="form-group">
-                    <label data-ar="رقم الهاتف" data-en="Phone Number">رقم الهاتف</label>
-                    <input type="tel" id="cust-phone" required placeholder="مثال: 0501234567">
-                </div>
-                <div class="form-group">
-                    <label data-ar="العنوان بالتفصيل" data-en="Detailed Address">العنوان بالتفصيل</label>
-                    <textarea id="cust-address" required placeholder="مثال: شارع الشيخ زايد، مبنى 5، شقة 10"></textarea>
-                </div>
-                <button type="submit" class="btn-submit" data-ar="تأكيد الطلب" data-en="Confirm Order">تأكيد الطلب</button>
-            </form>
-        </div>
     </div>
 
     <script src="script.js"></script>
