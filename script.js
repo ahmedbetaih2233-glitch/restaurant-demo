@@ -66,3 +66,50 @@ document.querySelectorAll('.add-btn').forEach(button => {
 document.querySelector('.btn-order').addEventListener('click', () => {
     document.querySelector('#meals').scrollIntoView({ behavior: 'smooth' });
 });
+// --- كود نافذة إتمام الطلب ---
+const modal = document.getElementById('checkout-modal');
+const cartIcon = document.querySelector('.cart-icon');
+const closeModalBtn = document.querySelector('.close-modal');
+const checkoutForm = document.getElementById('checkout-form');
+
+// فتح النافذة عند الضغط على أيقونة السلة
+cartIcon.addEventListener('click', () => {
+    if (cartCount === 0) {
+        alert(document.documentElement.getAttribute('lang') === 'ar' 
+            ? 'السلة فارغة! أضف بعض الأصناف أولاً.' 
+            : 'Your cart is empty! Add some items first.');
+        return;
+    }
+    modal.style.display = 'flex';
+});
+
+// إغلاق النافذة بزر X
+if (closeModalBtn) {
+    closeModalBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+}
+
+// إغلاق النافذة عند الضغط خارجها
+window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+        modal.style.display = 'none';
+    }
+});
+
+// تأكيد الطلب
+if (checkoutForm) {
+    checkoutForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const isArabic = document.documentElement.getAttribute('lang') === 'ar';
+        
+        alert(isArabic 
+            ? 'تم استلام طلبك بنجاح! سيصلك خلال 30-45 دقيقة. شكراً لثقتك بنا.' 
+            : 'Your order has been received successfully! It will arrive within 30-45 minutes. Thank you!');
+        
+        checkoutForm.reset();
+        modal.style.display = 'none';
+        cartCount = 0;
+        cartCountElement.textContent = 0;
+    });
+}
