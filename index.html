@@ -6,6 +6,7 @@
     <title data-ar="المطعم المصري - أصل الأكل" data-en="Egyptian Restaurant - Authentic Taste">المطعم المصري</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -42,12 +43,12 @@
     <main class="content">
         
         <!-- قسم الترحيب مع العروض المتحركة -->
-        <section id="home" class="hero-section" style="background: linear-gradient(rgba(253, 251, 247, 0.85), rgba(253, 251, 247, 0.85)), url('https://images.unsplash.com/photo-1541544741938-0af808871cc0?q=80&w=1000&auto=format&fit=crop') no-repeat center center/cover;">
+        <section id="home" class="hero-section">
+            <div class="hero-overlay"></div>
             <div class="hero-text">
-                <h1><span data-ar="أهلاً بيك في" data-en="Welcome to">أهلاً بيك في</span> <span data-ar="المطعم المصري" data-en="Egyptian Restaurant" style="color: #6F4E37;">المطعم المصري</span></h1>
+                <h1><span data-ar="أهلاً بيك في" data-en="Welcome to">أهلاً بيك في</span> <span class="highlight" data-ar="المطعم المصري" data-en="Egyptian Restaurant">المطعم المصري</span></h1>
                 <p data-ar="أشهى الأكلات المصرية الأصيلة.. من الكشري والملوخية للمشويات والحلويات الشرقية" data-en="The most delicious authentic Egyptian dishes.. From Koshary and Molokhia to grills and oriental desserts">أشهى الأكلات المصرية الأصيلة.. من الكشري والملوخية للمشويات والحلويات الشرقية</p>
                 
-                <!-- صندوق العروض المتحرك -->
                 <div class="offer-box">
                     <i class="fa-solid fa-tags"></i>
                     <div class="offer-text">
@@ -59,13 +60,15 @@
             </div>
         </section>
 
-        <!-- قسم الوجبات الرئيسية (10 أصناف) -->
+        <!-- قسم الوجبات الرئيسية -->
         <section id="meals" class="menu-section">
             <h2 class="section-title" data-ar="الوجبات الرئيسية" data-en="Main Meals">الوجبات الرئيسية</h2>
             <div class="menu-grid">
                 <!-- 1 -->
                 <div class="menu-card">
-                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1512058564366-18510be2db19?q=80&w=500&auto=format&fit=crop');"></div>
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1512058564366-18510be2db19?q=80&w=500&auto=format&fit=crop');">
+                        <span class="card-badge" data-ar="الأكثر طلباً" data-en="Best Seller">الأكثر طلباً</span>
+                    </div>
                     <div class="card-info">
                         <h3 data-ar="كشري مصري" data-en="Egyptian Koshary">كشري مصري</h3>
                         <p data-ar="طبق الكشري الأصلي بالعدس والأرز والمكرونة" data-en="Authentic Koshary with lentils, rice, and pasta">طبق الكشري الأصلي بالعدس والأرز والمكرونة</p>
@@ -89,7 +92,9 @@
                 </div>
                 <!-- 3 -->
                 <div class="menu-card">
-                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1544025162-d76690b67fbd?q=80&w=500&auto=format&fit=crop');"></div>
+                    <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1544025162-d76690b67fbd?q=80&w=500&auto=format&fit=crop');">
+                        <span class="card-badge discount-badge" data-ar="خصم 25%" data-en="25% OFF">خصم 25%</span>
+                    </div>
                     <div class="card-info">
                         <h3 data-ar="مشويات مشكلة" data-en="Mixed Grill">مشويات مشكلة</h3>
                         <p data-ar="تشكيلة من الكباب والكفتة والحمام" data-en="Selection of Kebab, Kofta, and Pigeon">تشكيلة من الكباب والكفتة والحمام</p>
@@ -216,35 +221,4 @@
                 <div class="menu-card"><div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?q=80&w=500&auto=format&fit=crop');"></div><div class="card-info"><h3 data-ar="مهلبية" data-en="Muhallebi">مهلبية</h3><p data-ar="مهلبية بالمكسرات" data-en="Muhallebi with nuts">مهلبية بالمكسرات</p><div class="card-bottom"><span class="price" data-ar="15 د.إ" data-en="15 AED">15 د.إ</span><button class="add-btn"><i class="fa-solid fa-plus"></i> <span data-ar="أضف" data-en="Add">أضف</span></button></div></div></div>
                 <div class="menu-card"><div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1582716401301-b2407dc7563d?q=80&w=500&auto=format&fit=crop');"></div><div class="card-info"><h3 data-ar="زلابية" data-en="Zalabia">زلابية</h3><p data-ar="زلابية مقرمشة بالعسل" data-en="Crispy Zalabia with honey">زلابية مقرمشة بالعسل</p><div class="card-bottom"><span class="price" data-ar="15 د.إ" data-en="15 AED">15 د.إ</span><button class="add-btn"><i class="fa-solid fa-plus"></i> <span data-ar="أضف" data-en="Add">أضف</span></button></div></div></div>
                 <div class="menu-card"><div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1600326145552-327cf6e0c1c7?q=80&w=500&auto=format&fit=crop');"></div><div class="card-info"><h3 data-ar="بلح الشام" data-en="Balah El Sham">بلح الشام</h3><p data-ar="بلح الشام المحشي بالقشطة" data-en="Balah El Sham stuffed with cream">بلح الشام المحشي بالقشطة</p><div class="card-bottom"><span class="price" data-ar="22 د.إ" data-en="22 AED">22 د.إ</span><button class="add-btn"><i class="fa-solid fa-plus"></i> <span data-ar="أضف" data-en="Add">أضف</span></button></div></div></div>
-                <div class="menu-card"><div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1599785209707-a456fc1337bb?q=80&w=500&auto=format&fit=crop');"></div><div class="card-info"><h3 data-ar="كاسترد" data-en="Custard">كاسترد</h3><p data-ar="كاسترد بالفواكه الطازجة" data-en="Custard with fresh fruits">كاسترد بالفواكه الطازجة</p><div class="card-bottom"><span class="price" data-ar="18 د.إ" data-en="18 AED">18 د.إ</span><button class="add-btn"><i class="fa-solid fa-plus"></i> <span data-ar="أضف" data-en="Add">أضف</span></button></div></div></div>
-            </div>
-        </section>
-
-        <!-- نافذة إتمام الطلب -->
-        <div id="checkout-modal" class="modal">
-            <div class="modal-content">
-                <span class="close-modal">&times;</span>
-                <h2 data-ar="إتمام الطلب" data-en="Checkout">إتمام الطلب</h2>
-                <form id="checkout-form">
-                    <div class="form-group">
-                        <label data-ar="الاسم بالكامل" data-en="Full Name">الاسم بالكامل</label>
-                        <input type="text" id="cust-name" required placeholder="مثال: أحمد محمد">
-                    </div>
-                    <div class="form-group">
-                        <label data-ar="رقم الهاتف" data-en="Phone Number">رقم الهاتف</label>
-                        <input type="tel" id="cust-phone" required placeholder="مثال: 0501234567">
-                    </div>
-                    <div class="form-group">
-                        <label data-ar="العنوان بالتفصيل" data-en="Detailed Address">العنوان بالتفصيل</label>
-                        <textarea id="cust-address" required placeholder="مثال: شارع الشيخ زايد، مبنى 5، شقة 10"></textarea>
-                    </div>
-                    <button type="submit" class="btn-submit" data-ar="تأكيد الطلب" data-en="Confirm Order">تأكيد الطلب</button>
-                </form>
-            </div>
-        </div>
-
-    </main>
-
-    <script src="script.js"></script>
-</body>
-</html>
+                <div class="menu-card"><div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1599785209707-a456fc1337bb?q=80&w=500&auto=format&fit=crop');"></div><div class="card-info"><h3 data-ar="كاسترد" data-en="Custard">كاسترد</h3><p data-ar="كاسترد بالفواكه الطازجة" data-en="Custard with fresh fruits">كاسترد بالفواكه الطازجة</p><div class="card-bottom"><span class="price" data-ar="18 د.إ
