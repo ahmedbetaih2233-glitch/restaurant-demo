@@ -1,5 +1,5 @@
 // =========================================
-// 1. كود تبديل اللغة (عربي / إنجليزي)
+// 1. تبديل اللغة (عربي / إنجليزي)
 // =========================================
 const langToggleBtn = document.getElementById('lang-toggle');
 const htmlElement = document.documentElement;
@@ -28,13 +28,12 @@ if (langToggleBtn) {
             document.title = titleElement.getAttribute(`data-${newLang}`);
         }
         
-        // تحديث السلة عند تغيير اللغة
         updateCartUI();
     });
 }
 
 // =========================================
-// 2. كود التنقل السلس (Smooth Scroll)
+// 2. التنقل السلس (Smooth Scroll)
 // =========================================
 document.querySelectorAll('.nav-links a').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -51,10 +50,9 @@ document.querySelectorAll('.nav-links a').forEach(anchor => {
 });
 
 // =========================================
-// 3. كود سلة المشتريات (الحقيقية)
+// 3. سلة المشتريات (الحقيقية + الشريط السفلي)
 // =========================================
 let cart = [];
-const cartCountElement = document.querySelector('.cart-count');
 const cartItemsContainer = document.getElementById('cart-items');
 const subtotalElement = document.getElementById('subtotal');
 const discountElement = document.getElementById('discount');
@@ -64,20 +62,39 @@ const closeCartModalBtn = document.querySelector('.close-cart-modal');
 const goToCheckoutBtn = document.getElementById('go-to-checkout');
 const checkoutModal = document.getElementById('checkout-modal');
 
+// عناصر الشريط السفلي
+const bottomCartBar = document.getElementById('bottom-cart-bar');
+const openCartDetails = document.getElementById('open-cart-details');
+const barItemCount = document.getElementById('bar-item-count');
+const barSubtotal = document.getElementById('bar-subtotal');
+const barDiscount = document.getElementById('bar-discount');
+const barTotal = document.getElementById('bar-total');
+const barGoCheckout = document.getElementById('bar-go-checkout');
+const cartCountElements = document.querySelectorAll('.cart-count');
+
 function updateCartUI() {
+    const isArabic = document.documentElement.getAttribute('lang') === 'ar';
+    const currency = isArabic ? 'د.إ' : 'AED';
+
     if (cartItemsContainer) {
         cartItemsContainer.innerHTML = '';
     }
 
     let subtotal = 0;
     let totalItems = 0;
-    const isArabic = document.documentElement.getAttribute('lang') === 'ar';
 
     if (cart.length === 0) {
         if (cartItemsContainer) {
             cartItemsContainer.innerHTML = `<p style="text-align:center; color:#7A6A5F; padding:20px;">${isArabic ? 'السلة فارغة' : 'Cart is empty'}</p>`;
         }
+        if (bottomCartBar) {
+            bottomCartBar.classList.add('hidden');
+        }
     } else {
+        if (bottomCartBar) {
+            bottomCartBar.classList.remove('hidden');
+        }
+
         cart.forEach((item, index) => {
             const itemTotal = item.price * item.quantity;
             subtotal += itemTotal;
@@ -88,7 +105,7 @@ function updateCartUI() {
             itemDiv.innerHTML = `
                 <div class="cart-item-info">
                     <span class="cart-item-name">${item.name}</span>
-                    <span class="cart-item-price">${item.price} ${isArabic ? 'د.إ' : 'AED'}</span>
+                    <span class="cart-item-price">${item.price} ${currency}</span>
                 </div>
                 <div class="cart-item-controls">
                     <button class="qty-btn decrease" data-index="${index}">-</button>
@@ -106,14 +123,21 @@ function updateCartUI() {
     const discountRate = 0.15;
     const discountAmount = subtotal * discountRate;
     const total = subtotal - discountAmount;
-    const currency = isArabic ? 'د.إ' : 'AED';
 
+    // نافذة السلة
     if (subtotalElement) subtotalElement.textContent = `${subtotal.toFixed(2)} ${currency}`;
     if (discountElement) discountElement.textContent = `${discountAmount.toFixed(2)} ${currency}`;
     if (totalElement) totalElement.textContent = `${total.toFixed(2)} ${currency}`;
-    if (cartCountElement) cartCountElement.textContent = totalItems;
 
-    // ربط أحداث الأزرار
+    // الشريط السفلي
+    if (barItemCount) barItemCount.textContent = totalItems;
+    if (barSubtotal) barSubtotal.textContent = `${subtotal.toFixed(2)} ${currency}`;
+    if (barDiscount) barDiscount.textContent = `${discountAmount.toFixed(2)} ${currency}`;
+    if (barTotal) barTotal.textContent = `${total.toFixed(2)} ${currency}`;
+
+    cartCountElements.forEach(el => el.textContent = totalItems);
+
+    // ربط أزرار الكمية
     document.querySelectorAll('.qty-btn.increase').forEach(btn => {
         btn.addEventListener('click', (e) => {
             const index = e.target.getAttribute('data-index');
@@ -158,7 +182,7 @@ document.querySelectorAll('.add-btn').forEach(button => {
         const card = e.target.closest('.menu-card');
         const name = card.querySelector('h3').getAttribute('data-ar');
         const priceText = card.querySelector('.price').getAttribute('data-ar');
-        const price = parseFloat(priceText.replace(' د.إ', ''));
+        const price = parseFloat(priceText.replace(' د.إ', '').replace(' د.إ', ''));
         
         addToCart(name, price);
 
@@ -174,12 +198,15 @@ document.querySelectorAll('.add-btn').forEach(button => {
 });
 
 // =========================================
-// 4. فتح وإغلاق نافذة السلة
+// 4. فتح نافذة السلة التفصيلية
 // =========================================
-const cartIcon = document.querySelector('.cart-icon');
-
-if (cartIcon && cartModal) {
-    cartIcon.addEventListener('click', () => {
+if (openCartDetails && cartModal) {
+    openCartDetails.addEventListener('click', () => {
+        if (cart.length === 0) {
+            const isArabic = document.documentElement.getAttribute('lang') === 'ar';
+            alert(isArabic ? 'السلة فارغة! أضف بعض الأصناف أولاً.' : 'Your cart is empty! Add some items first.');
+            return;
+        }
         updateCartUI();
         cartModal.style.display = 'flex';
     });
@@ -198,19 +225,23 @@ window.addEventListener('click', (e) => {
 });
 
 // =========================================
-// 5. الانتقال من السلة إلى إتمام الطلب
+// 5. الانتقال إلى إتمام الطلب
 // =========================================
-if (goToCheckoutBtn && cartModal && checkoutModal) {
-    goToCheckoutBtn.addEventListener('click', () => {
-        if (cart.length === 0) {
-            alert(document.documentElement.getAttribute('lang') === 'ar'
-                ? 'السلة فارغة! أضف بعض الأصناف أولاً.'
-                : 'Your cart is empty! Add some items first.');
-            return;
-        }
-        cartModal.style.display = 'none';
-        checkoutModal.style.display = 'flex';
-    });
+function proceedToCheckout() {
+    if (cart.length === 0) {
+        const isArabic = document.documentElement.getAttribute('lang') === 'ar';
+        alert(isArabic ? 'السلة فارغة! أضف بعض الأصناف أولاً.' : 'Your cart is empty! Add some items first.');
+        return;
+    }
+    if (cartModal) cartModal.style.display = 'none';
+    if (checkoutModal) checkoutModal.style.display = 'flex';
+}
+
+if (goToCheckoutBtn) {
+    goToCheckoutBtn.addEventListener('click', proceedToCheckout);
+}
+if (barGoCheckout) {
+    barGoCheckout.addEventListener('click', proceedToCheckout);
 }
 
 // =========================================
@@ -234,7 +265,23 @@ if (checkoutForm && checkoutModal) {
 }
 
 // =========================================
-// 7. كود فتح وإغلاق القائمة الجانبية (للموبايل)
+// 7. إغلاق نافذة إتمام الطلب
+// =========================================
+const closeModalBtn = document.querySelector('.close-modal');
+if (closeModalBtn && checkoutModal) {
+    closeModalBtn.addEventListener('click', () => {
+        checkoutModal.style.display = 'none';
+    });
+}
+
+window.addEventListener('click', (e) => {
+    if (e.target === checkoutModal) {
+        checkoutModal.style.display = 'none';
+    }
+});
+
+// =========================================
+// 8. قائمة الموبايل
 // =========================================
 const menuToggle = document.getElementById('menu-toggle');
 const sidebar = document.getElementById('sidebar');
@@ -257,3 +304,6 @@ if (menuToggle && sidebar) {
         }
     });
 }
+
+// تهيئة أولية
+updateCartUI();
