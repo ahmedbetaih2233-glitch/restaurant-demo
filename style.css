@@ -457,3 +457,59 @@ html[dir="ltr"] .nav-links a i {
     margin-left: 0;
     margin-right: 15px;
 }
+/* =========================================
+   زر القائمة (Menu Toggle) وتجاوب الموبايل
+   ========================================= */
+.menu-toggle {
+    display: none; /* مخفي على الشاشات الكبيرة */
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1001;
+    background-color: var(--primary-brown);
+    color: #fff;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 22px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+.menu-toggle:hover {
+    background-color: var(--accent-gold);
+}
+
+/* على الشاشات الصغيرة (الموبايل) */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .sidebar {
+        right: -280px; /* إخفاء القائمة خارج الشاشة */
+        width: 260px;
+        transition: right 0.4s ease;
+    }
+    
+    /* عندما نضيف كلاس active للقائمة تظهر */
+    .sidebar.active {
+        right: 0;
+    }
+
+    .content {
+        margin-right: 0; /* المحتوى يأخذ كامل العرض */
+        width: 100%;
+        padding: 20px;
+        padding-top: 80px; /* مساحة لزر القائمة */
+    }
+
+    /* تصغير حجم النصوص على الموبايل */
+    .hero-text h1 { font-size: 32px; }
+    .hero-text p { font-size: 16px; }
+    .section-title { font-size: 26px; }
+    .menu-grid { grid-template-columns: 1fr; }
+}
